@@ -21,8 +21,8 @@ msg_info "Forcing DNS to Cloudflare and Google"
 } >/etc/resolv.conf
 
 # Optionally disable systemd-resolved or any other resolv.conf overwrites if used:
-# systemctl disable systemd-resolved >/dev/null 2>&1 || true
-# systemctl stop systemd-resolved >/dev/null 2>&1 || true
+systemctl disable systemd-resolved >/dev/null 2>&1 || true
+systemctl stop systemd-resolved >/dev/null 2>&1 || true
 
 # Restart networking (harmless if not using these services)
 systemctl restart networking >/dev/null 2>&1 || true
