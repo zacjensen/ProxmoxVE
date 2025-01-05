@@ -25,16 +25,16 @@ msg_info "Forcing DNS to Cloudflare and Google"
 # systemctl stop systemd-resolved >/dev/null 2>&1 || true
 
 # Restart networking (harmless if not using these services)
-systemctl restart networking >/dev/null 2>&1 || true
-systemctl restart systemd-networkd >/dev/null 2>&1 || true
-systemctl restart systemd-resolved >/dev/null 2>&1 || true
-msg_ok "DNS updated"
+# systemctl restart networking >/dev/null 2>&1 || true
+# systemctl restart systemd-networkd >/dev/null 2>&1 || true
+# systemctl restart systemd-resolved >/dev/null 2>&1 || true
+# msg_ok "DNS updated"
 
-msg_info "Installing Dependencies"
-$STD apt-get install -y curl
-$STD apt-get install -y sudo
-$STD apt-get install -y mc
-msg_ok "Installed Dependencies"
+# msg_info "Installing Dependencies"
+# $STD apt-get install -y curl
+# $STD apt-get install -y sudo
+# $STD apt-get install -y mc
+# msg_ok "Installed Dependencies"
 
 get_latest_release() {
   curl -sL https://api.github.com/repos/$1/releases/latest | grep '"tag_name":' | cut -d'"' -f4
