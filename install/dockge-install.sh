@@ -14,11 +14,11 @@ network_check
 update_os
 
 # >>> ADD THIS SECTION TO OVERRIDE /etc/resolv.conf <<<
-msg_info "Forcing DNS to Cloudflare and Google"
-{
-  echo "nameserver 1.1.1.1"
-  echo "nameserver 8.8.8.8"
-} >/etc/resolv.conf
+# msg_info "Forcing DNS to Cloudflare and Google"
+# {
+#   echo "nameserver 1.1.1.1"
+#   echo "nameserver 8.8.8.8"
+# } >/etc/resolv.conf
 
 # Optionally disable systemd-resolved or any other resolv.conf overwrites if used:
 # systemctl disable systemd-resolved >/dev/null 2>&1 || true
@@ -30,11 +30,11 @@ msg_info "Forcing DNS to Cloudflare and Google"
 # systemctl restart systemd-resolved >/dev/null 2>&1 || true
 # msg_ok "DNS updated"
 
-# msg_info "Installing Dependencies"
-# $STD apt-get install -y curl
-# $STD apt-get install -y sudo
-# $STD apt-get install -y mc
-# msg_ok "Installed Dependencies"
+msg_info "Installing Dependencies"
+$STD apt-get install -y curl
+$STD apt-get install -y sudo
+$STD apt-get install -y mc
+msg_ok "Installed Dependencies"
 
 get_latest_release() {
   curl -sL https://api.github.com/repos/$1/releases/latest | grep '"tag_name":' | cut -d'"' -f4
